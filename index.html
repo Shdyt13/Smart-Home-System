@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Smart Home</title>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="connection-status" id="connectionStatus">
+    <span class="loading"></span> Menghubungkan...
+  </div>
+
+  <div class="container">
+    <div class="header">
+      <h1>🏠 Smart Home Dashboard</h1>
+      <p>Monitoring dan kontrol sistem rumah pintar Anda</p>
+    </div>
+
+    <div class="dashboard-grid">
+      <!-- Sensor Card -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-icon">📊</span>
+          <h2 class="card-title">Sensor Monitoring</h2>
+        </div>
+
+        <div class="sensor-item">
+          <div class="sensor-label">LDR (Cahaya)</div>
+          <div class="sensor-values">
+            <div class="sensor-value" id="ldrValue">—</div>
+            <span class="sensor-status" id="ldrStatus">—</span>
+          </div>
+        </div>
+
+        <div class="sensor-item">
+          <div class="sensor-label">Gas Sensor</div>
+          <div class="sensor-values">
+            <div class="sensor-value" id="gasValue">—</div>
+            <span class="sensor-status" id="gasStatus">—</span>
+          </div>
+        </div>
+
+        <div class="sensor-item">
+          <div class="sensor-label">Water Level</div>
+          <div class="sensor-values">
+            <div class="sensor-value"><span id="waterDistance">—</span> cm</div>
+            <span class="sensor-status" id="waterStatus">—</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Control Card -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-icon">⚙️</span>
+          <h2 class="card-title">Kontrol Sistem</h2>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="modeSelect">Mode Operasi:</label>
+          <select id="modeSelect" class="mode-select">
+            <option value="auto">🤖 Otomatis</option>
+            <option value="manual">👤 Manual</option>
+          </select>
+        </div>
+
+        <div class="toggle-container">
+          <div class="toggle-item" data-device="led">
+            <span class="toggle-label">💡 LED</span>
+            <label class="switch">
+              <input type="checkbox" id="ledToggle">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item" data-device="pompa">
+            <span class="toggle-label">💧 Pompa</span>
+            <label class="switch">
+              <input type="checkbox" id="pompaToggle">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item" data-device="buzzer">
+            <span class="toggle-label">🔊 Buzzer</span>
+            <label class="switch">
+              <input type="checkbox" id="buzzerToggle">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="status-message" id="statusMsg">
+          Sistem siap digunakan
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
